@@ -6,9 +6,16 @@
 #define EXIT_SUCCESS 0
 
 int main(void) {
-	puts("Hello, World!");
+	kon_time lastTime = kon_getTime();
 
-	printf("The time we got was: %lf\n", kon_getTime());
+	puts("Hello, World!");
+	printf("9 + 10 = %d\n", 9 + 10);
+
+	kon_time currentTime = kon_getTime();
+
+	kon_time deltaTime = currentTime - lastTime;
+		
+	printf("The time that passed while running the functions was: %lf\n", deltaTime);
 
 	return EXIT_SUCCESS;
 }
