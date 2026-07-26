@@ -23,15 +23,37 @@ As I've said before, just drag the [header file](kontime.h) into the project you
 
 If you ever need to calculate elapsed time... just do the delta time formula. current time minus previous time.
 ```c
-double last_time = kon_getTime();
+kon_time last_time = kon_getTime();
 
 /* after some time has passed */
-double current_time = kon_getTime();
+kon_time current_time = kon_getTime();
 
 /* some people refer to this as deltaTime or elapsedTime */
-double elapsedTime = current_time - last_time;
+kon_time elapsedTime = current_time - last_time;
 ```
 This is how you usually calculate how much time has passed.
+
+For those who are curious, kon_time is just a double.
+
+### Something to note
+
+If you are ever compiling with a strict standard for c99
+```sh
+cc -std=c99 main.c
+```
+Then please define #define _POSIX_C_SOURCE=200809L.
+
+You can define it in your c files **STRICTLY BEFORE** including your headers.
+```c
+#define _POSIX_C_SOURCE 200809L
+#define KONTIME_IMPLEMENTATION
+#include "kontime.h"
+```
+
+or during compile time.
+```sh
+cc -std=c99 main.c -D_POSIX_C_SOURCE=200809L
+```
 
 ## Examples
 

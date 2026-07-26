@@ -3,7 +3,9 @@
 
 /*** definition ***/
 
-double kon_getTime(void);
+typedef double kon_time;
+
+kon_time kon_getTime(void);
 
 /*** implementation ***/
 
@@ -14,23 +16,23 @@ double kon_getTime(void);
 #define _POSIX_C_SOURCE 200809L
 #include <time.h>
 
-double kon_getTime(void) {
+kon_time kon_getTime(void) {
   struct timespec ts;
   clock_gettime(CLOCK_MONOTONIC, &ts);
 
-  return (double)ts.tv_sec + (double)ts.tv_nsec / 1e9; 
+  return (kon_time)ts.tv_sec + (kon_time)ts.tv_nsec / 1e9; 
 }
 
 #elif defined(_WIN32)
 
 #include <windows.h>
 
-double kon_getTime(void) {
+kon_time kon_getTime(void) {
 	LARGE_INTEGER freq, now;
 	QueryPerformanceFrequency(&freq);
 	QueryPerformanceCounter(&now);
 
-	return (double)now.QuadPart / (double)freq.QuadPart;
+	return (kon_time)now.QuadPart / (kon_time)freq.QuadPart;
 }
 
 #else
