@@ -15,7 +15,7 @@ This was specifically made with c99 in mind. You can read about it through [this
 
 You don't have to build this even though I've included a [Makefile](Makefile). That was just for compiling the example.
 
-As I've said before, just drag the header file into the project you wish to use it in. **HOWEVER**: you will need one **AND ONLY ONE** file that defines KONTIME_IMPLEMENTATION. You define it like this:
+As I've said before, just drag the [header file](kontime.h) into the project you wish to use it in. **HOWEVER**: you will need one **AND ONLY ONE** file that defines KONTIME_IMPLEMENTATION. You define it like this:
 ```c
 #define KONTIME_IMPLEMENTATION
 #include "kontime.h"
