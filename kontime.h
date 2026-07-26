@@ -23,6 +23,20 @@ double kon_getTime(void) {
 
 #endif /* end of unix / posix compliant systems */
 
+#if defined(_WIN32)
+
+#include <windows.h>
+
+double kon_getTime(void) {
+	LARGE_INTEGER freq, now;
+	QueryPerformanceFrequency(&freq);
+	QueryPerformanceCounter(&now);
+
+	return (double)now.QuadPart / (double)freq.QuadPart
+}
+
+#endif
+
 #endif /* end of KONTIME_IMPLEMENTATION */
 
 
