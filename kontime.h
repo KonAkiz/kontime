@@ -21,9 +21,7 @@ double kon_getTime(void) {
   return (double)ts.tv_sec + (double)ts.tv_nsec / 1e9; 
 }
 
-#endif /* end of unix / posix compliant systems */
-
-#if defined(_WIN32)
+#elif defined(_WIN32)
 
 #include <windows.h>
 
@@ -35,7 +33,10 @@ double kon_getTime(void) {
 	return (double)now.QuadPart / (double)freq.QuadPart;
 }
 
-#endif /* end of windows implementation */
+#else
+#error "kontime.h: unsupported platform!"
+
+#endif
 
 #endif /* end of KONTIME_IMPLEMENTATION */
 
