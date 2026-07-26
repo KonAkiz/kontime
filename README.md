@@ -41,7 +41,7 @@ If you are ever compiling with a strict standard for c99
 ```sh
 cc -std=c99 main.c
 ```
-Then please define #define _POSIX_C_SOURCE=200809L.
+Then please define #define _POSIX_C_SOURCE 200809L.
 
 You can define it in your c files **STRICTLY BEFORE** including your headers.
 ```c
