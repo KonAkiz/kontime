@@ -1,0 +1,29 @@
+#ifndef KONTIME_H
+#define KONTIME_H
+
+/*** definition ***/
+
+double kon_getTime(void);
+
+/*** implementation ***/
+
+#ifdef KONTIME_IMPLEMENTATION
+
+#if defined(__linux__) || defined(__unix__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__)
+
+#define _POSIX_C_SOURCE 200809L
+#include <time.h>
+
+double kon_getTime(void) {
+  struct timespec ts;
+  clock_gettime(CLOCK_MONOTONIC, &ts);
+
+  return ts.tv_sec + ts.tv_nsec / 1e9; 
+}
+
+#endif /* end of unix / posix compliant systems */
+
+#endif /* end of KONTIME_IMPLEMENTATION */
+
+
+#endif
