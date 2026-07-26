@@ -18,7 +18,7 @@ double kon_getTime(void) {
   struct timespec ts;
   clock_gettime(CLOCK_MONOTONIC, &ts);
 
-  return ts.tv_sec + ts.tv_nsec / 1e9; 
+  return (double)ts.tv_sec + (double)ts.tv_nsec / 1e9; 
 }
 
 #endif /* end of unix / posix compliant systems */
@@ -32,10 +32,10 @@ double kon_getTime(void) {
 	QueryPerformanceFrequency(&freq);
 	QueryPerformanceCounter(&now);
 
-	return (double)now.QuadPart / (double)freq.QuadPart
+	return (double)now.QuadPart / (double)freq.QuadPart;
 }
 
-#endif
+#endif /* end of windows implementation */
 
 #endif /* end of KONTIME_IMPLEMENTATION */
 
