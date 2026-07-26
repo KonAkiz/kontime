@@ -7,6 +7,8 @@
 #define EXIT_SUCCESS 0
 
 int main(void) {
+	kon_time seconds = 1.0;
+
 	kon_time lastTime = kon_getTime();
 
 	puts("Hello, World!");
@@ -16,6 +18,15 @@ int main(void) {
 
 	kon_time deltaTime = currentTime - lastTime;
 		
+	printf("The time that passed while running the functions was: %lf\n", deltaTime);
+
+	lastTime = kon_getTime();
+	printf("waiting for %.02f seconds.\n", seconds);
+
+	kon_sleep(seconds);
+
+	currentTime = kon_getTime();
+	deltaTime = currentTime - lastTime;
 	printf("The time that passed while running the functions was: %lf\n", deltaTime);
 
 	return EXIT_SUCCESS;
