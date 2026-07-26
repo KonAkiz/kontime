@@ -33,6 +33,13 @@ kon_time elapsedTime = current_time - last_time;
 ```
 This is how you usually calculate how much time has passed.
 
+If you ever need to make a program sleep, use kon_sleep.
+```c
+kon_time seconds = 1.0; /* literally just a single second */
+
+kon_sleep(seconds);
+```
+
 For those who are curious, kon_time is just a double.
 
 ### Something to note
