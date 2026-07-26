@@ -21,6 +21,18 @@ As I've said before, just drag the [header file](kontime.h) into the project you
 #include "kontime.h"
 ```
 
+If you ever need to calculate elapsed time... just do the delta time formula. current time minus previous time.
+```c
+double last_time = kon_getTime();
+
+/* after some time has passed */
+double current_time = kon_getTime();
+
+/* some people refer to this as deltaTime or elapsedTime */
+double elapsedTime = current_time - last_time;
+```
+This is how you usually calculate how much time has passed.
+
 ## Examples
 
 If you wish to see my examples, you can check my [examples dir/folder](examples) or my [main.c file](examples/main.c).
