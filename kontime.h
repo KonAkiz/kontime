@@ -7,6 +7,8 @@ typedef double kon_time;
 
 kon_time kon_getTime(void);
 
+void kon_sleep(kon_time seconds);
+
 /*** implementation ***/
 
 #ifdef KONTIME_IMPLEMENTATION
@@ -23,6 +25,14 @@ kon_time kon_getTime(void) {
   return (kon_time)ts.tv_sec + (kon_time)ts.tv_nsec / 1e9; 
 }
 
+void kon_sleep(kon_time seconds) {
+	struct timespec ts;
+	ts.tv_sec  = (time_t)seconds;
+	ts.tv_nsec = (long)((seconds - ts.tv_sec) * 1e9);
+		
+	nanosleep(&ts, NULL);
+}
+
 #elif defined(_WIN32)
 
 #include <windows.h>
@@ -33,6 +43,10 @@ kon_time kon_getTime(void) {
 	QueryPerformanceCounter(&now);
 
 	return (kon_time)now.QuadPart / (kon_time)freq.QuadPart;
+}
+
+void kon_sleep(kon_time seconds) {
+	sleep((DWORD)(seconds * 1000.0));
 }
 
 #else
