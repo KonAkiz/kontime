@@ -1,10 +1,10 @@
+.POSIX:
+
+#
+# COMPILE OPTIONS
+#
+
 CC=c99
-
-SRC=examples/main.c
-
-OBJ=$(SRC:.c=.o)
-
-TARGET=program
 
 CFLAGS=-Wall -Wextra -Werror -pedantic -std=c99
 
@@ -12,16 +12,32 @@ INC=-I.
 
 LIBS=-L.
 
+# SRCS
+
+SRC=examples/main.c
+
+# OBJS
+
+OBJ=$(SRC:.c=.o)
+
+# TARGETS
+
+TARGET=program
+
 .PHONY: test
 
 ${TARGET}: ${OBJ}
 	${CC} ${SRC} -o ${TARGET} ${CFLAGS} ${INC}
 
-%.o: %.c
+.SUFFIX: .c .o
+
+.c.o:
 	${CC} -c ${CFLAGS} $< -o $@ ${INC}
 
 test: ${TARGET}
-	@./${TARGET}
+	-./${TARGET}
+
+.SILENT: clean
 
 clean:
 	rm -vf ${TARGET} ${OBJ}
