@@ -1,9 +1,12 @@
 # KONTIME
+## KonAki's Minimal Time Library
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Language](https://img.shields.io/badge/language-C99-orange)
 
 ## About
+
+This library only gives you functions to mark the time. and sleep a specific amount of time on both windows and linux.
 
 This project was made just because I got annoyed with constantly reimplementing this thing for my different projects. I won't be maintaining this much because this is sort of simple to do and seems like it's pretty much finished.
 
