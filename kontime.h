@@ -40,7 +40,9 @@ void kon_sleep(kon_time seconds);
 
 #if defined(__linux__) || defined(__unix__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__)
 
+#ifndef _POSIX_C_SOURCE
 #define _POSIX_C_SOURCE 200809L
+#endif
 #include <time.h>
 
 kon_time kon_getTime(void) {
